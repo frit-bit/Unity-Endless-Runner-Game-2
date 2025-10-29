@@ -7,14 +7,12 @@ using UnityEngine.UI;
 public class CharacterSelection : MonoBehaviour
 {
     public Characters character;
-    public static CharacterSelection instance;
-    public Button AjButton;
-    public Button LeonardButton;
-    public Button NinjaButton;
+     public static CharacterSelection instance;
+   
 
     private void Awake()
     {
-        // Singleton pattern — ensures only one script exists
+        // Singleton pattern — ensures only one MusicManager exists
         if (instance != null && instance != this)
         {
             Destroy(gameObject); // destroy duplicate
@@ -22,30 +20,9 @@ public class CharacterSelection : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(this);
-        AjButton.onClick.AddListener(Aj);
-        LeonardButton.onClick.AddListener(Leonard);
-        NinjaButton.onClick.AddListener(Ninja);
+        DontDestroyOnLoad(gameObject);
     }
-    public void Aj()
-    {
-        character = Characters.Aj;
-        LoadLevel();
-    }
-    public void Leonard()
-    {
-        character = Characters.Leonard;
-        LoadLevel();
-    }
-    public void Ninja()
-    {
-        character = Characters.Ninja;
-        LoadLevel();
-    }
-    public void LoadLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
+    
 }
 public enum Characters
 {

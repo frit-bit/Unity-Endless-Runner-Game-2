@@ -23,18 +23,27 @@ public class GameManager : MonoBehaviour
         if (selection.character == Characters.Aj)
         {
             myChracterAvatar.avatar = Aj.GetComponent<Animator>().avatar;
+            DisableAllCharacters();
             Aj.SetActive(true);
         }
         if (selection.character == Characters.Ninja)
         {
             myChracterAvatar.avatar = Ninja.GetComponent<Animator>().avatar;
+            DisableAllCharacters();
             Ninja.SetActive(true);
         }
         if (selection.character == Characters.Leonard)
         {
             myChracterAvatar.avatar = Leonard.GetComponent<Animator>().avatar;
+            DisableAllCharacters();
             Leonard.SetActive(true);
         }
+    }
+    public void DisableAllCharacters()
+    {
+        Aj.SetActive(false);
+        Ninja.SetActive(false);
+        Leonard.SetActive(false);
     }
     private void Start()
     {
